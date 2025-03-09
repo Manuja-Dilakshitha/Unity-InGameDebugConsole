@@ -67,3 +67,4 @@ jobs:
           body: "New release for the In-Game Debug Console."
           draft: false
           prerelease: false
+          
