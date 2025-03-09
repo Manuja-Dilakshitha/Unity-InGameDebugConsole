@@ -21,11 +21,16 @@ jobs:
 #          rm -rf ~/.local/share/unity3d
 #          rm -rf ~/.unity3d
 
+
+      - name: Decode and Save Unity License
+        run: echo "${{ secrets.UNITY_LICENSE }}" | base64 --decode > UnityLicense.ulf
+
+
       - name: Activate Unity License #manually activate a license
         uses: game-ci/unity-activate@v2
         with:
           activationMethod: "file"
-          lincenseFile: Unity_v2017.x.ulf
+          lincenseFile: UnityLicense.ulf
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
