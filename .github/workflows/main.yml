@@ -3,9 +3,9 @@ name: Unity-InGameDebugConsole CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - main #will be triggered if a push is made to the main branch
     tags:
-      - 'v*'
+      - 'v*' #or a new version is added
 
 jobs:
   build:
@@ -15,6 +15,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3 #get latest code from repo
+
+      - name: Activate Unity License #automatically activate a license
+        uses: game-ci/unity-activate@v2
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
       - name: Setup Unity
         uses: game-ci/unity-builder@v2
