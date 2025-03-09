@@ -25,6 +25,7 @@ jobs:
         uses: game-ci/unity-activate@v2
         with:
           activationMethod: "file"
+          lincenseFile: Unity_v2017.x.ulf
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
