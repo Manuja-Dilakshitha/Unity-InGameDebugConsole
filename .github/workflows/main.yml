@@ -16,8 +16,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3 #get latest code from repo
 
-      - name: Activate Unity License #automatically activate a license
+      - name: Clean Unity License Cache #to avoid license generation issues
+        run: |
+          rm -rf ~/.local/share/unity3d
+          rm -rf ~/.unity3d
+
+      - name: Activate Unity License #manually activate a license
         uses: game-ci/unity-activate@v2
+        with:
+          activationMethod: "manual"
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
