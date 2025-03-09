@@ -16,10 +16,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3 #get latest code from repo
 
-      - name: Clean Unity License Cache #to avoid license generation issues
-        run: |
-          rm -rf ~/.local/share/unity3d
-          rm -rf ~/.unity3d
+#      - name: Clean Unity License Cache #to avoid license generation issues
+#        run: |
+#          rm -rf ~/.local/share/unity3d
+#          rm -rf ~/.unity3d
 
       - name: Activate Unity License #manually activate a license
         uses: game-ci/unity-activate@v2
