@@ -58,11 +58,11 @@ Debug.LogError("This is an error message");
 1. Enter a command in the text field and press Enter.
 2. The console will execute the command if it matches a valid function.
 3. Enter the command 'help' to get a list of all available commands.
-4. Key commands include 'list' and 'set' which allows the users to list all the variables marked with '[DebugVariable]' attribute and change their values at runtime using the 'set' command.
+4. Key commands include 'list' and 'set' which allows the users to list all the variables marked with [DebugVariable] attribute and change their values at runtime using the 'set' command.
 
 ### Debug Variables
 
-To expose script variables for runtime modification, mark them with the '[DebugVariable]' attribute:
+To expose script variables for runtime modification, mark them with the [DebugVariable] attribute:
 
 ```csharp
 public class Player : MonoBehaviour {
