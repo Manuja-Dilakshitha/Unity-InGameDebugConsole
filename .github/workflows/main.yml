@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: Build Unity Package
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -51,7 +51,7 @@ jobs:
   release:
     name: Create Github Release
     needs: build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
     steps:
