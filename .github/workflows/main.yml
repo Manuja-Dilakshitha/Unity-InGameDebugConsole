@@ -22,7 +22,7 @@ jobs:
 #          rm -rf ~/.unity3d
 
       - name: Activate Unity License #manually activate a license
-        uses: game-ci/unity-activate@v4
+        uses: game-ci/unity-activate@v2
         with:
           activationMethod: "file"
         env:
