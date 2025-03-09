@@ -1,0 +1,63 @@
+name: Unity-InGameDebugConsole CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build Unity Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3 #get latest code from repo
+
+      - name: Setup Unity
+        uses: game-ci/unity-builder@v2
+        with:
+            unityVersion: 6000.0.33f1
+
+      - name: Export Unitypackage
+        run: |
+          mkdir -p build
+          unity-editor -quit -batchmode -nographics -logfile \
+            -projectPath . \
+            -exportPackage "Assets/InGameDebugConsole" "build/InGameDebugConsole.unitypackage"
+
+
+      - name: Upload Unitypackage as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: InGameDebugConsole
+          path: build/InGameDebugConsole.unitypackage
+
+  release:
+    name: Create Github Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Unity Package
+        uses: actions/download-artifact@v3
+        with:
+          name: UnityPackage
+          path: Build
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/InGameDebugConsole.unitypackage
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ github.ref_name }}
+          release_name: "Release ${{ github.ref_name }}"
+          body: "New release for the In-Game Debug Console."
+          draft: false
+          prerelease: false
