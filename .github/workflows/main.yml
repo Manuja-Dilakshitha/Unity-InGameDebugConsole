@@ -24,11 +24,9 @@ jobs:
       - name: Activate Unity License #manually activate a license
         uses: game-ci/unity-activate@v2
         with:
-          activationMethod: "personal"
+          activationMethod: "file"
         env:
-#          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
       - name: Setup Unity
         uses: game-ci/unity-builder@v4
