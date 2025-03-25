@@ -1,3 +1,5 @@
+![Debug Console Screenshots](Screenshots/inGameDebugConsoleDemo.png)
+
 # In-Game Debug Console for Unity
 
 An **In-Game Debug Console** for Unity that allows real-time logging, filtering, and executing commands during runtime. This tool helps developers and testers debug their games while running on any platform without relying on the Unity Editor Console.

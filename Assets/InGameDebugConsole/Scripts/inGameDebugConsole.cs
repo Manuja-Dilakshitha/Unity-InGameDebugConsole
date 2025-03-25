@@ -90,10 +90,7 @@ namespace IGDC
         //TODO : remove this
         private void Start()
         {
-            Debug.Log("hello");
-            Debug.LogError("this is an error");
-            Debug.LogWarning("fakdjhlfa");
-
+            Debug.Log("In Game Debug Console Started");
             StartCoroutine(testErrorIE());
 
             executor = this.AddComponent<codeExecutor>();
